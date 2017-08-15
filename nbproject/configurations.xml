@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>operation_sequence_writer.h</itemPath>
+      <itemPath>../random/random.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -15,6 +16,7 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>operation_sequence_writer.c</itemPath>
+      <itemPath>../random/random.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -41,6 +43,10 @@
           <standard>10</standard>
         </cTool>
       </compileType>
+      <item path="../random/random.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../random/random.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="operation_sequence_writer.c" ex="false" tool="0" flavor2="0">
@@ -69,6 +75,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="../random/random.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../random/random.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="operation_sequence_writer.c" ex="false" tool="0" flavor2="0">

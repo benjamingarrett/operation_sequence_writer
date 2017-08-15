@@ -18,8 +18,12 @@
 extern "C" {
 #endif
 
-
-
+    #include <string.h>
+    #include <stdint.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include "../random/random.h"
+    void do_operation_sequence( int argc, char** argv );
 
 #ifdef __cplusplus
 }
