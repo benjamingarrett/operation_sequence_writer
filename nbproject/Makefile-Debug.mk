@@ -54,7 +54,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lm
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -67,7 +67,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/operation_sequence_writer: ${OBJECTFI
 ${OBJECTDIR}/_ext/cd19c7f2/random.o: ../random/random.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/cd19c7f2
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/cd19c7f2/random.o ../random/random.c
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/cd19c7f2/random.o ../random/random.c  -lm
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
