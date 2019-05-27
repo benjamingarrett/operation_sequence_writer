@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   operation_sequence_writer.h
  * Author: benjamin
@@ -18,11 +12,6 @@
 extern "C" {
 #endif
 
-#include <string.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "../random/random.h"
   void do_operation_sequence(int argc, char** argv);
 
 #ifdef __cplusplus

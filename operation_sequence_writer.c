@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+#include <string.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "../random/random.h"
 #include "operation_sequence_writer.h"
 
 #define FALSE 0
@@ -18,8 +17,7 @@ const char * directory = "../../misc_phd/input/operation_sequences";
 
 void write_operation_sequence(char comment[200], int feedback_enabled, int indexes_enabled, int64_t max_key, int64_t capacity, int64_t max_load,
         int deletions_enabled, int64_t num_operations, int * operation, int64_t * key, int * expected_result, char fname[200],
-        int64_t * index, double percentage_reads, double percentage_repeat_reads, int64_t min_read_streak_length, int64_t max_read_streak_length) {
-
+        int64_t * index, double percentage_reads, double percentage_repeat_reads, int64_t min_read_streak_length, int64_t max_read_streak_length){
   printf("write %s\n", fname);
   FILE * fp = fopen(fname, "w");
   fprintf(fp, "%s\n", comment);
@@ -41,12 +39,12 @@ void write_operation_sequence(char comment[200], int feedback_enabled, int index
       for(int64_t g = 0; g < num_operations; g++){
         fprintf(fp, "%d %ld %d %ld\n", operation[g], key[g], expected_result[g], index[g]);
       }
-    } else {
+    }else{
       for(int64_t g = 0; g < num_operations; g++){
         fprintf(fp, "%d %ld %d\n", operation[g], key[g], expected_result[g]);
       }
     }
-  } else {
+  }else{
     printf("writing operation key\n");
     for(int64_t g = 0; g < num_operations; g++){
       fprintf(fp, "%d %ld\n", operation[g], key[g]);
@@ -56,22 +54,18 @@ void write_operation_sequence(char comment[200], int feedback_enabled, int index
 }
 
 void generate_special_operation_sequence_without_feedback_001(){
-
   char fname[200], comment[200];
   int * operation;
   int64_t g, h, j, * key, * saved_key, num_reads, num_writes, num_deletes;
   double percentage_reads, percentage_repeat_reads, min_read_streak_length, max_read_streak_length;
   int64_t num_operations, max_key, deletions_enabled;
   int64_t first_threshold, second_threshold, num_phase_two_reads;
-
   num_reads = num_writes = num_deletes = 0;
   percentage_reads = percentage_repeat_reads = min_read_streak_length = max_read_streak_length = 0.0;
-
   first_threshold = 9216;
   num_phase_two_reads = 32;
   second_threshold = 9728;
   num_operations = 10240;
-
   max_key = 100000;
   deletions_enabled = FALSE;
   strcpy(comment, " ");
@@ -129,13 +123,11 @@ void generate_special_operation_sequence_without_feedback_001(){
 
 void generate_operation_sequence_without_feedback(int64_t num_operations, int64_t max_key,
         int deletions_enabled, double percentage_reads, char comment[200],
-        double percentage_repeat_reads, int64_t min_read_streak_length, int64_t max_read_streak_length) {
-
+        double percentage_repeat_reads, int64_t min_read_streak_length, int64_t max_read_streak_length){
   char fname[200];
   int * operation, g, h;
   int64_t * key, num_reads, num_writes, num_deletes, streak_length, repeated_key;
   double x, y;
-
   num_reads = num_writes = num_deletes = 0;
   printf("without feedback\n");
   if(deletions_enabled == TRUE){
@@ -143,7 +135,7 @@ void generate_operation_sequence_without_feedback(int64_t num_operations, int64_
             directory, num_operations, max_key);
     //        sprintf(fname, "../misc_phd/input/operation_sequences/without_feedback/deletions/%ld/operation_sequence_without_feedback-%ld-%ld", 
     //                num_operations, num_operations, max_key);
-  } else {
+  }else{
     sprintf(fname, "%s/without_feedback/without_deletions/operation_sequence_without_feedback-%ld-%ld",
             directory, num_operations, max_key);
     //        sprintf(fname, "../misc_phd/input/operation_sequences/without_feedback/without_deletions/%ld/operation_sequence_without_feedback-%ld-%ld", 
@@ -185,12 +177,12 @@ void generate_operation_sequence_without_feedback(int64_t num_operations, int64_
         }
         //                printf("choosing operation %d\n", operation[g]);
       }
-    } else {
+    }else{
       if(x < percentage_reads){
         //                printf("choosing to read\n");
         num_reads++;
         operation[g] = 0;
-      } else {
+      }else{
         //                printf("choosing to write\n");
         num_writes++;
         operation[g] = 1;
@@ -225,13 +217,11 @@ void generate_operation_sequence_without_feedback(int64_t num_operations, int64_
 void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t max_key,
         int64_t capacity, int deletions_enabled, double percentage_reads, char comment[200],
         double percentage_repeat_reads, int64_t min_read_streak_length, int64_t max_read_streak_length){
-
   FILE * fp;
   char fname[200];
   int * operation, * cache, * expected_result, * load, g, h;
   int64_t * key, size, max_load, num_reads, num_writes, num_deletes, streak_length, repeated_key;
   double x, y;
-
   size = max_load = num_reads = num_writes = num_deletes = 0;
   operation = calloc(num_operations, sizeof(int));
   key = calloc(num_operations, sizeof(int64_t));
@@ -246,7 +236,7 @@ void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t m
         printf("choosing to read\n");
         num_reads++;
         operation[g] = 0;
-      } else {
+      }else{
         operation[g] = rand_in_range(1, 3);
         switch(operation[g]){
           case 0:
@@ -264,12 +254,12 @@ void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t m
         }
         printf("choosing operation %d\n", operation[g]);
       }
-    } else {
+    }else{
       if(x < percentage_reads){
         printf("choosing to read\n");
         num_reads++;
         operation[g] = 0;
-      } else {
+      }else{
         printf("choosing to write\n");
         num_writes++;
         operation[g] = 1;
@@ -280,14 +270,14 @@ void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t m
       case READ:
         if(cache[key[g]] == 0){
           expected_result[g] = 0; /* not found */
-        } else {
+        }else{
           expected_result[g] = 1; /* found */
         }
         break;
       case WRITE:
         if(size >= capacity){
           expected_result[g] = 0; /* cache is full, therefore cannot write key */
-        } else {
+        }else{
           if(cache[key[g]] == 0){ /* not already in cache, therefore write key */
             cache[key[g]] = 1;
             expected_result[g] = 1;
@@ -304,7 +294,7 @@ void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t m
             printf("failed deletion\n");
             #endif
             expected_result[g] = 0;
-          } else { /* key is in cache, therefore delete key */
+          }else{ /* key is in cache, therefore delete key */
             #ifdef SHOW_PROGRESS
             printf("succeeded deletion\n");
             #endif
@@ -316,7 +306,7 @@ void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t m
               exit(EXIT_FAILURE);
             }
           }
-        } else {
+        }else{
           expected_result[g] = 0;
         }
         break;
@@ -340,7 +330,7 @@ void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t m
             expected_result[g] = 0; /* not found */
             fprintf(stderr, "A repeated read is unsuccessful. WTF?!\n");
             exit(1);
-          } else {
+          }else{
             expected_result[g] = 1; /* found */
           }
           g++;
@@ -355,7 +345,7 @@ void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t m
             directory, num_operations, max_key, capacity, max_load);
     //        sprintf(fname, "../misc_phd/input/operation_sequences/feedback/deletions/%ld/operation_sequence_with_feedback-%ld-%ld-%ld-%ld", 
     //                num_operations, num_operations, max_key, capacity, max_load);
-  } else {
+  }else{
     sprintf(fname, "%s/feedback/without_deletions/operation_sequence_with_feedback-%ld-%ld-%ld-%ld",
             directory, num_operations, max_key, capacity, max_load);
     //        sprintf(fname, "../misc_phd/input/operation_sequences/feedback/without_deletions/%ld/operation_sequence_with_feedback-%ld-%ld-%ld-%ld", 
@@ -370,12 +360,10 @@ void generate_operation_sequence_with_feedback(int64_t num_operations, int64_t m
 }
 
 void do_operation_sequence(int argc, char** argv){
-
   int64_t feedback_enabled, deletions_enabled, indexes_enabled;
   int64_t num_operations, max_key, capacity;
   int64_t min_read_streak_length, max_read_streak_length;
   char comment[200];
-
   printf("write operation sequence\n");
   //generate_special_operation_sequence_without_feedback_001();
   //exit(0);
