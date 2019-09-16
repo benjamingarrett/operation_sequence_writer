@@ -6,9 +6,8 @@
  */
 
 #include "operation_sequence_writer.h"
-
 int main(int argc, char** argv){
   do_operation_sequence(argc, argv);
-  return (EXIT_SUCCESS);
+  return 0;
 }
 
