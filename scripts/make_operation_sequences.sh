@@ -1,3 +1,13 @@
+#../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 100000 --max_key 2000 --percentage_reads 0.5 --sequential_write_length 1024
+
+#../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 100000 --max_key 2000 --percentage_reads 0.9 --sequential_write_length 1024
+
+../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 100000 --max_key 2000 --percentage_reads 0.4 --percentage_repeat_reads 0.3 --min_read_streak_length 2 --max_read_streak_length 30 --sequential_write_length 1024
+
+
+
+
+
 #../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 1 --deletions_enabled 0 --num_operations 100 --max_key 32 --capacity 32 --percentage_reads 0.9
 #../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 1 --deletions_enabled 1 --num_operations 100 --max_key 32 --capacity 32 --percentage_reads 0.9
 
@@ -25,8 +35,12 @@
 #../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 1000000 --max_key 100000 
 
 #../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 100 --max_key 100
-../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 50 --max_key 50
-../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 30 --max_key 30
+
+#../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 150 --max_key 50
+#../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 200 --max_key 50
+
+#../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 50 --max_key 50
+#../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 0 --deletions_enabled 0 --num_operations 30 --max_key 30
 #../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 1 --deletions_enabled 0 --num_operations 10 --max_key 32 --capacity 16
 #../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 1 --deletions_enabled 0 --num_operations 20 --max_key 32 --capacity 16
 #../dist/Debug/GNU-Linux/operation_sequence_writer --feedback_enabled 1 --deletions_enabled 0 --num_operations 30 --max_key 32 --capacity 16
